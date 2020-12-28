@@ -32,11 +32,13 @@ export default class FileResults extends PureComponent {
         {
           this.props.data.slice(1, this.props.data.length).map(dataRow => (
             <tr>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
+            {
+              dataRow.map(dataElement=> (
+                <td>
+                {dataElement}
+                </td>
+              ))
+            }
             </tr>
           ))
         }
