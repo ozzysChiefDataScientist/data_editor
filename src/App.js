@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import FileResults from "./FileResults";
 import Header from "./Header";
 import CSVReader from 'react-csv-reader';
 
@@ -12,6 +13,10 @@ export default class App extends PureComponent {
   handleForce = (data, fileInfo) => {
     console.log(data);
     console.log(fileInfo);
+    this.setState({
+      data: data,
+      fileInfo: fileInfo,
+    })
   }
 
 
@@ -20,6 +25,7 @@ export default class App extends PureComponent {
       <div>
         <Header />
         <CSVReader onFileLoaded={this.handleForce} />
+        <FileResults data={this.state.data} />
       </div>
     );
   }
