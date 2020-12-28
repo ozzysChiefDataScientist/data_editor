@@ -15,7 +15,21 @@ export default class FileResults extends PureComponent {
   render() {
     return (
       <div>
-        {this.props.data}
+      <table class="table">
+        <thead>
+        <tr>
+           {
+                this.props.data[0].map(headerTitle =>(
+                   <td>
+                    {
+                      headerTitle
+                    }
+                   </td>
+                ))
+           }
+           </tr>
+        </thead>
+      </table>
       </div>
     );
   }
