@@ -8,15 +8,19 @@ export default class App extends PureComponent {
     super(props);
     this.state = {
       data: [[]],
-      fileInfo: undefined
+      fileInfo: undefined,
+      header: [],
     };
   }
 
   handleForce = (data, fileInfo) => {
     console.log(data);
     console.log(fileInfo);
+    console.log('header');
+    console.log(data[0]);
     this.setState({
-      data: data,
+      header: data[0],
+      data: data.slice(1,data.length),
       fileInfo: fileInfo,
     })
   }
@@ -27,7 +31,7 @@ export default class App extends PureComponent {
       <div>
         <Header />
         <CSVReader onFileLoaded={this.handleForce} />
-        <FileResults data={this.state.data} />
+        <FileResults data={this.state.data} header={this.state.header}/> {/*Props are passed to components via HTML attributes.*/}
       </div>
     );
   }
