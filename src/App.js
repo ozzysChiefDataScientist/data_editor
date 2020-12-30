@@ -25,29 +25,24 @@ export default class App extends PureComponent {
 
   handleButton = () => {
 
-    let header = this.state.header;
-    header.push('Category');
+    let header = this.state.header.concat(['category']);
+
+    // let data = this.state.data;
+    // let index=0;
+    // for (index = 0; index < data.length; index++) {
+    //   data[index].push("");
+    // }
 
     this.setState({
-      data: [[]],
-      fileInfo: undefined,
-      header: header,
-    })
+      data: this.state.data,
+      fileInfo: this.state.fileInfo,
+      header: header
+    });
 
-
-    // let original_data = this.state.data;
-    //
-    // let index=0;
-    // for (index = 0; index < original_data.length; index++) {
-    //   original_data[index].push("");
-    // }
-    //
-    //
-    // //not erroring out but not re-rendering table
     // this.setState({
-    //   header: original_header,
-    //   data: original_data,
-    //   fileInfo: this.state.fileInfo,
+    //   data: data,
+    //   fileInfo: undefined,
+    //   header: header,
     // })
 
   }
