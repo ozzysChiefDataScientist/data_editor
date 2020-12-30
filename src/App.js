@@ -2,8 +2,6 @@ import React, { PureComponent, useState} from "react";
 import FileResults from "./FileResults";
 import Header from "./Header";
 import CSVReader from 'react-csv-reader';
-import ReactTable from "react-table";
-import "./react-table.css";
 
 const initial_state = {
   columns: [],
@@ -11,6 +9,7 @@ const initial_state = {
   fileInfo: undefined,
   header: [],
 }
+
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -79,17 +78,14 @@ export default class App extends PureComponent {
 
   render() {
 
+
     console.log(this.state);
     return (
       <div>
         <Header />
         <div><button onClick={this.handleButton}>Add Column</button></div>
         <CSVReader onFileLoaded={this.handleForce} />
-        <ReactTable
-            data={this.state.data}
-            columns={this.state.columns}
-          />
-        {/*}<FileResults data={this.state.data} header={this.state.header}/>*/} {/*Props are passed to components via HTML attributes.*/}
+        <FileResults data={this.state.data} columns={this.state.columns}/> {/*Props are passed to components via HTML attributes.*/}
       </div>
     );
   }

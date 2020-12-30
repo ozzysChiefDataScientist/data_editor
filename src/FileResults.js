@@ -1,10 +1,11 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import TableHeader from "./TableHeader";
+import ReactTable from "react-table";
 
 export default class FileResults extends PureComponent {
   static propTypes = {
-    header: PropTypes.array,
+    columns: PropTypes.array,
     data: PropTypes.array
   };
 
@@ -14,38 +15,57 @@ export default class FileResults extends PureComponent {
   componentWillUnmount() {
   }
 
+
   render() {
+    console.log('props passed to FileResults');
+    console.log(this.props);
     return (
       <div>
       <table class="table">
       <thead>
       <tr>
          {
-              this.props.header.map(headerTitle =>(
+              this.props.columns.map(headerTitle =>(
                  <td>
                   {
-                    headerTitle
+                    headerTitle['Header']
                   }
                  </td>
               ))
          }
          </tr>
       </thead>
-        {
-          this.props.data.slice(1, this.props.data.length).map(dataRow => (
-            <tr>
-            {
-              dataRow.map(dataElement=> (
-                <td>
-                {dataElement}
-                </td>
-              ))
-            }
-            </tr>
-          ))
-        }
+      {
+           this.props.data.map(dataRow =>(
+             <tr>
+             {
+                  this.props.columns.map(column =>(
+                    <td>
+                    {
+                      dataRow[column['accessor']]
+                    }
+                    </td>
+                  ))
+              }
+             </tr>
+           ))
+      }
       </table>
       </div>
     );
   }
 }
+
+// {
+//   this.props.data.map(dataRow => (
+//     <tr>
+//     {
+//       dataRow.map(dataElement=> (
+//         <td>
+//         {dataElement}
+//         </td>
+//       ))
+//     }
+//     </tr>
+//   ))
+// }
