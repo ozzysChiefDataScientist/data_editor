@@ -16,9 +16,26 @@ export default class App extends PureComponent {
   }
 
   handleForce = (data, fileInfo) => {
+
+    let header = data[0];
+    let data_body = data.slice(1,data.length);
+
+    // convert data to json array
+    let data_json = [];
+    let row_index =0;
+    for (row_index = 0; row_index < data_body.length; row_index++) {
+      let col_index = 0;
+      let row_json = {};
+      for (col_index = 0; col_index < data_body[row_index].length; col_index++) {
+        row_json[header[col_index]] = data_body[row_index][col_index];
+      }
+      data_json.push(row_json);
+    }
+
+
     this.setState({
-      header: data[0],
-      data: data.slice(1,data.length),
+      header: header,
+      data: data_json,
       fileInfo: fileInfo,
     })
   }
