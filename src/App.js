@@ -27,24 +27,17 @@ export default class App extends PureComponent {
 
     let header = this.state.header.concat(['category']);
 
-    // let data = this.state.data;
-    // let index=0;
-    // for (index = 0; index < data.length; index++) {
-    //   data[index].push("");
-    // }
+    let data = this.state.data;
+    let index=0;
+    for (index = 0; index < data.length; index++) {
+      data[index] = data[index].concat([""]);
+    }
 
     this.setState({
-      data: this.state.data,
+      data: data,
       fileInfo: this.state.fileInfo,
       header: header
     });
-
-    // this.setState({
-    //   data: data,
-    //   fileInfo: undefined,
-    //   header: header,
-    // })
-
   }
 
 
