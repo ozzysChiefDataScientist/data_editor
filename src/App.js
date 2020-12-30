@@ -3,14 +3,16 @@ import FileResults from "./FileResults";
 import Header from "./Header";
 import CSVReader from 'react-csv-reader';
 
+const initial_state = {
+  data: [[]],
+  fileInfo: undefined,
+  header: [],
+}
+
 export default class App extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      data: [[]],
-      fileInfo: undefined,
-      header: [],
-    };
+    this.state = initial_state;
   }
 
   handleForce = (data, fileInfo) => {
