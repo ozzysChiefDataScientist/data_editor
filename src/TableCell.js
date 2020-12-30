@@ -24,7 +24,15 @@ export default class TableCell extends PureComponent {
     const isEmpty = (this.props.text == '') ? true : false;
     let div_component;
     if (isEmpty) {
-      div_component = <div>Empty</div>;
+      div_component = (
+      <div>
+      <select name={this.props.colName}>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+      </div>);
     } else {
       div_component = <div>{this.props.text}</div>;
     }
