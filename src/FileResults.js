@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import TableHeader from "./TableHeader";
 import ReactTable from "react-table";
+import TableCell from "./TableCell";
 
 export default class FileResults extends PureComponent {
   static propTypes = {
@@ -41,9 +42,7 @@ export default class FileResults extends PureComponent {
              {
                   this.props.columns.map(column =>(
                     <td>
-                    {
-                      dataRow[column['accessor']]
-                    }
+                    <TableCell text={dataRow[column['accessor']]} />
                     </td>
                   ))
               }
