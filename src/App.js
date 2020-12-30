@@ -55,18 +55,24 @@ export default class App extends PureComponent {
 
   handleButton = () => {
 
-    let header = this.state.header.concat(['category']);
+    let new_col_name = 'category';
+
+    let columns = this.state.columns.concat([{
+      'Header': new_col_name.toUpperCase(),
+      'accessor': new_col_name
+    }]);
 
     let data = this.state.data;
-    let index=0;
-    for (index = 0; index < data.length; index++) {
-      data[index] = data[index].concat([""]);
+    let row_index =0;
+    for (row_index = 0; row_index < data.length; row_index++) {
+      data[row_index][new_col_name] = ''
     }
 
     this.setState({
+      columns: columns,
       data: data,
       fileInfo: this.state.fileInfo,
-      header: header
+      header: this.state.header.concat(['category'])
     });
   }
 
