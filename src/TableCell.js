@@ -4,7 +4,8 @@ import TableHeader from "./TableHeader";
 
 export default class TableCell extends PureComponent {
   static propTypes = {
-    text: PropTypes.string
+    text: PropTypes.string,
+    id: PropTypes.number
   };
 
   constructor(props) {
@@ -21,12 +22,11 @@ export default class TableCell extends PureComponent {
   }
 
   handleChange(e) {
-    this.props.onDropdownChange(e.target.value);
+    this.props.onDropdownChange(e.target.value, this.props.id);
   }
 
 
   render() {
-
     const isEmpty = (this.props.text == '') ? true : false;
     let div_component;
     if (isEmpty) {
