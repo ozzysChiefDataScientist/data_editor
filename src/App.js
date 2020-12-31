@@ -30,6 +30,7 @@ export default class App extends PureComponent {
       for (col_index = 0; col_index < data_body[row_index].length; col_index++) {
         row_json[header[col_index]] = data_body[row_index][col_index];
       }
+      row_json['index'] = row_index;
       data_json.push(row_json);
     }
 
@@ -42,6 +43,7 @@ export default class App extends PureComponent {
       this_col['accessor'] = header[col_index];
       columns.push(this_col)
     }
+    columns.push({"Header": "INDEX", "accessor": "index"})
 
     this.setState({
       columns: columns,
