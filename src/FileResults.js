@@ -10,14 +10,27 @@ export default class FileResults extends PureComponent {
     data: PropTypes.array
   };
 
+  constructor(props) {
+    super(props);
+    this.handleMenuChange = this.handleMenuChange.bind(this);
+    this.state = {car: "volvo"};
+  }
+
   componentDidMount() {
   }
 
   componentWillUnmount() {
   }
 
+  handleMenuChange(car) {
+    this.setState({...this.state, 'car': car});
+  }
+
 
   render() {
+    console.log('state change in FileResults');
+    console.log(this.state);
+
     console.log('props passed to FileResults');
     console.log(this.props);
     return (
@@ -42,7 +55,8 @@ export default class FileResults extends PureComponent {
              {
                   this.props.columns.map(column =>(
                     <td>
-                    <TableCell text={dataRow[column['accessor']]} />
+                    <TableCell text={dataRow[column['accessor']]} colName={column['Header']}
+                    onDropdownChange={this.handleMenuChange} />
                     </td>
                   ))
               }

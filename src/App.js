@@ -10,7 +10,6 @@ const initial_state = {
   header: [],
 }
 
-
 export default class App extends PureComponent {
   constructor(props) {
     super(props);
