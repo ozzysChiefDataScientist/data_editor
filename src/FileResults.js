@@ -23,13 +23,27 @@ export default class FileResults extends PureComponent {
 
   render() {
 
+    // do not render index
+    let cols_to_render = [];
+    let col_index = 0;
+    let found_col_index = 0;
+    for (col_index = 0; col_index < this.props.columns.length; col_index++) {
+      console.log(this.props.columns[col_index]['accessor']);
+      if (this.props.columns[col_index]['accessor'] != 'index') {
+        cols_to_render.push(this.props.columns[col_index]);
+      }
+      else {
+        found_col_index = col_index;
+      }
+    }
+
     return (
       <div>
       <table class="table">
       <thead>
       <tr>
          {
-              this.props.columns.map(headerTitle =>(
+              cols_to_render.map(headerTitle =>(
                  <td>
                   {
                     headerTitle['Header']
@@ -43,7 +57,7 @@ export default class FileResults extends PureComponent {
            this.props.data.map(dataRow =>(
              <tr>
              {
-                  this.props.columns.map(column =>(
+                  cols_to_render.map(column =>(
                     <td>
                     <TableCell id={dataRow['index']}
                     text={dataRow[column['accessor']]}
