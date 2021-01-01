@@ -47,7 +47,7 @@ export default class FileResults extends PureComponent {
                     <td>
                     <TableCell id={dataRow['index']}
                     text={dataRow[column['accessor']]}
-                    colName={column['Header']}
+                    colname={column['Header']}
                     updateData ={this.props.updateData}/>
                     </td>
                   ))

@@ -83,10 +83,20 @@ export default class App extends PureComponent {
 
     let event_row_id = event.target.getAttribute('row_id');
 
+    //get name of column that has been chagned
+    let event_column = event.target.getAttribute('colname');
+    let event_column_accessor = '';
+    let col_index = 0;
+    for (col_index = 0; col_index < this.state.columns.length; col_index++) {
+      if (this.state.columns[col_index]['Header']==event_column) {
+        event_column_accessor = this.state.columns[col_index]['accessor'];
+      }
+    }
+
+    //update data
     let changedData = event.target.value;
     let newData = [...this.state.data]
-
-    newData[event_row_id] = {...newData[event_row_id], 'category': changedData}
+    newData[event_row_id] = {...newData[event_row_id], [event_column_accessor]: changedData}
 
     this.setState({
       ...this.state,
