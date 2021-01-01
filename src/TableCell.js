@@ -11,7 +11,25 @@ export default class TableCell extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {isLoggedIn: false,
-                  categories: ['Groceries/Essentials', 'Rent', 'Utilities']};
+                  categories: [
+                    'Alonso',
+                    'Books',
+                  'Clothing',
+                  'Dining',
+                  'Entertainment',
+                  'Financial Transfer',
+                  'Gifts',
+                  'Groceries/Essentials',
+                  'Home',
+                  'IRS',
+                  'Moving',
+                  'Paycheck',
+                  'Personal Care',
+                  'Philanthropy',
+                   'Rent',
+                   'Transit',
+                   'Travel',
+                    'Utilities']};
 }
 
   componentDidMount() {
