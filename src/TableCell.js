@@ -11,7 +11,7 @@ export default class TableCell extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {isLoggedIn: false,
-                  car: 'volvo'};
+                  categories: ['Groceries/Essentials', 'Rent', 'Utilities']};
 }
 
   componentDidMount() {
@@ -28,10 +28,11 @@ export default class TableCell extends PureComponent {
       div_component = (
       <div>
       <select row_id={this.props.id} colname={this.props.colname} onChange={this.props.updateData} value={this.state.value}>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
+      {
+           this.state.categories.map(category =>(
+              <option value={category}>{category}</option>
+            ))
+      }
       </select>
       </div>);
     } else {
