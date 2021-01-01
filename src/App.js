@@ -81,13 +81,12 @@ export default class App extends PureComponent {
 
   dataUpdater = (event) => {
 
+    let event_row_id = event.target.getAttribute('row_id');
+
     let changedData = event.target.value;
     let newData = [...this.state.data]
 
-    let row_index =0;
-    let id = 0;
-
-    newData[row_index] = {...newData[row_index], 'category': changedData}
+    newData[event_row_id] = {...newData[event_row_id], 'category': changedData}
 
     this.setState({
       ...this.state,

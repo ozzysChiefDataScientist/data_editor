@@ -27,7 +27,7 @@ export default class TableCell extends PureComponent {
     if (isEmpty) {
       div_component = (
       <div>
-      <select name='car' onChange={this.props.updateData} value={this.state.value}>
+      <select row_id={this.props.id} onChange={this.props.updateData} value={this.state.value}>
         <option value="volvo">Volvo</option>
         <option value="saab">Saab</option>
         <option value="mercedes">Mercedes</option>
