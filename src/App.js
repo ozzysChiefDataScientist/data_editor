@@ -2,6 +2,7 @@ import React, { PureComponent, useState} from "react";
 import FileResults from "./FileResults";
 import Header from "./Header";
 import CSVReader from 'react-csv-reader';
+import {CSVLink, CSVDownload} from "react-csv";
 
 const initial_state = {
   columns: [],
@@ -116,7 +117,10 @@ export default class App extends PureComponent {
         <CSVReader onFileLoaded={this.handleForce} />
         <FileResults data={this.state.data}
         columns={this.state.columns}
-        updateData ={(event) => this.dataUpdater(event)}/> {/*Props are passed to components via HTML attributes.*/}
+        updateData ={(event) => this.dataUpdater(event)}/>
+        <CSVLink data={this.state.data} headers={this.state.header}>
+  Download me
+</CSVLink>;
       </div>
     );
   }
