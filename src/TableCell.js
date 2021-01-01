@@ -10,7 +10,6 @@ export default class TableCell extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
     this.state = {isLoggedIn: false,
                   car: 'volvo'};
 }
@@ -21,10 +20,6 @@ export default class TableCell extends PureComponent {
   componentWillUnmount() {
   }
 
-  handleChange(e) {
-    this.props.onDropdownChange(e.target.value, this.props.id);
-  }
-
 
   render() {
     const isEmpty = (this.props.text == '') ? true : false;
@@ -32,7 +27,7 @@ export default class TableCell extends PureComponent {
     if (isEmpty) {
       div_component = (
       <div>
-      <select name='car' onChange={this.handleChange} value={this.state.value}>
+      <select name='car' onChange={this.props.updateData} value={this.state.value}>
         <option value="volvo">Volvo</option>
         <option value="saab">Saab</option>
         <option value="mercedes">Mercedes</option>

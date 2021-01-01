@@ -14,6 +14,9 @@ export default class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = initial_state;
+    this.handleForce = this.handleForce.bind(this);
+    this.handleButton = this.handleButton.bind(this);
+    this.dataUpdater = this.dataUpdater.bind(this);
   }
 
   handleForce = (data, fileInfo) => {
@@ -65,7 +68,7 @@ export default class App extends PureComponent {
     let data = this.state.data;
     let row_index =0;
     for (row_index = 0; row_index < data.length; row_index++) {
-      data[row_index][new_col_name] = ''
+      data[row_index][new_col_name] = '';
     }
 
     this.setState({
@@ -76,17 +79,35 @@ export default class App extends PureComponent {
     });
   }
 
+  dataUpdater = (event) => {
+
+    let changedData = event.target.value;
+    let newData = [...this.state.data]
+
+    let row_index =0;
+    let id = 0;
+
+    newData[row_index] = {...newData[row_index], 'category': changedData}
+
+    this.setState({
+      ...this.state,
+      data: newData,
+      });
+
+  }
 
   render() {
 
-
-    console.log(this.state);
+    console.log('state in App.js');
+    console.log(this.state.data[0]);
     return (
       <div>
         <Header />
         <div><button onClick={this.handleButton}>Add Column</button></div>
         <CSVReader onFileLoaded={this.handleForce} />
-        <FileResults data={this.state.data} columns={this.state.columns}/> {/*Props are passed to components via HTML attributes.*/}
+        <FileResults data={this.state.data}
+        columns={this.state.columns}
+        updateData ={(event) => this.dataUpdater(event)}/> {/*Props are passed to components via HTML attributes.*/}
       </div>
     );
   }

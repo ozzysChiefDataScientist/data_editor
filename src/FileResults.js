@@ -12,8 +12,6 @@ export default class FileResults extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.handleMenuChange = this.handleMenuChange.bind(this);
-    this.state = {car: "volvo"};
   }
 
   componentDidMount() {
@@ -22,26 +20,8 @@ export default class FileResults extends PureComponent {
   componentWillUnmount() {
   }
 
-  handleMenuChange(car, id) {
-    let data = this.props.data;
-    let row_index =0;
-    for (row_index = 0; row_index < data.length; row_index++) {
-      if (data[row_index]['index'] == id) {
-        data[row_index]['category'] = car;
-      }
-    }
-
-    console.log('updated data in handleMenuChange');
-    console.log(data);
-
-    this.setState({...this.state, 'car': car});
-  }
-
 
   render() {
-
-    console.log('props in fileResults');
-    console.log(this.props);
 
     return (
       <div>
@@ -65,8 +45,10 @@ export default class FileResults extends PureComponent {
              {
                   this.props.columns.map(column =>(
                     <td>
-                    <TableCell id={dataRow['index']} text={dataRow[column['accessor']]} colName={column['Header']}
-                    onDropdownChange={this.handleMenuChange} />
+                    <TableCell id={dataRow['index']}
+                    text={dataRow[column['accessor']]}
+                    colName={column['Header']}
+                    updateData ={this.props.updateData}/>
                     </td>
                   ))
               }
