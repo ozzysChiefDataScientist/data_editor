@@ -8,13 +8,6 @@ export default class FileResults extends PureComponent {
     data: PropTypes.array
   };
 
-  componentDidMount() {
-  }
-
-  componentWillUnmount() {
-  }
-
-
   render() {
 
     // do not render index
