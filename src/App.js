@@ -1,8 +1,10 @@
 import React, { PureComponent, useState} from "react";
+import BarChartByCategory from "./BarChartByCategory";
 import FileResults from "./FileResults";
 import Header from "./Header";
 import CSVReader from 'react-csv-reader';
 import {CSVLink, CSVDownload} from "react-csv";
+import { VictoryBar } from 'victory';
 
 const initial_state = {
   columns: [],
@@ -32,7 +34,12 @@ export default class App extends PureComponent {
       let col_index = 0;
       let row_json = {};
       for (col_index = 0; col_index < data_body[row_index].length; col_index++) {
-        row_json[header[col_index]] = data_body[row_index][col_index];
+        if (header[col_index] == 'Amount') {
+          row_json[header[col_index]] = parseFloat(data_body[row_index][col_index]);
+        }
+        else {
+          row_json[header[col_index]] = data_body[row_index][col_index];
+        }
       }
       row_json['index'] = row_index;
       data_json.push(row_json);
@@ -106,10 +113,12 @@ export default class App extends PureComponent {
 
   }
 
+
+
   render() {
 
     console.log('state in App.js');
-    console.log(this.state.data[0]);
+    console.log(this.state.data);
     return (
       <div>
         <Header />
@@ -118,9 +127,8 @@ export default class App extends PureComponent {
         <FileResults data={this.state.data}
         columns={this.state.columns}
         updateData ={(event) => this.dataUpdater(event)}/>
-        <CSVLink data={this.state.data} headers={this.state.header}>
-  Download me
-</CSVLink>;
+        <CSVLink data={this.state.data} headers={this.state.header}>Download me</CSVLink>
+        <BarChartByCategory data={this.state.data} />
       </div>
     );
   }
