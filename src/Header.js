@@ -5,7 +5,7 @@ export default class Header extends PureComponent {
   render() {
     return (
       <header className="component-header">
-        CSV Uploader
+        Data Editor
       </header>
     );
   }
