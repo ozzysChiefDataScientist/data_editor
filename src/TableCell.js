@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import TableHeader from "./TableHeader";
+import categoryList from "./categoryList.json";
+
 
 export default class TableCell extends PureComponent {
   static propTypes = {
@@ -11,27 +12,7 @@ export default class TableCell extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {isFinalized: false,
-                  categories: [
-                    '',
-                    'Alonso',
-                    'Books',
-                  'Clothing',
-                  'Dining',
-                  'Entertainment',
-                  'Financial Transfer',
-                  'Gifts',
-                  'Groceries/Essentials',
-                  'Health',
-                  'Home',
-                  'IRS',
-                  'Moving',
-                  'Paycheck',
-                  'Personal Care',
-                  'Philanthropy',
-                   'Rent',
-                   'Transit',
-                   'Travel',
-                    'Utilities']};
+                  categories: categoryList.map(category => (category.category_name) )};
 }
 
   componentDidMount() {
