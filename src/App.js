@@ -21,6 +21,24 @@ export default class App extends PureComponent {
     this.dataUpdater = this.dataUpdater.bind(this);
   }
 
+  componentDidMount() {
+    // Call our fetch function below once the component mounts
+    this.callBackendAPI()
+      .then(res => this.setState({ express_data: res.express }))
+      .catch(err => console.log(err));
+  }
+
+    // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
+  callBackendAPI = async () => {
+    const response = await fetch('/express_backend');
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message)
+    }
+    return body;
+  };
+
   handleForce = (data, fileInfo) => {
 
     let header = data[0];
@@ -123,9 +141,7 @@ export default class App extends PureComponent {
         <Header />
         <div><button onClick={this.handleButton}>Add Column</button></div>
         <CSVReader onFileLoaded={this.handleForce} />
-        <FileResults data={this.state.data}
-        columns={this.state.columns}
-        updateData ={(event) => this.dataUpdater(event)}/>
+        <FileResults data={this.state.data} columns={this.state.columns} updateData ={(event) => this.dataUpdater(event)}/>
         <button><CSVLink data={this.state.data} headers={this.state.header}>Download me</CSVLink></button>
         <BarChartByCategory data={this.state.data} />
       </div>
