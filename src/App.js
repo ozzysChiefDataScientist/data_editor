@@ -1,10 +1,9 @@
-import React, { PureComponent, useState} from "react";
+import React, { PureComponent} from "react";
 import BarChartByCategory from "./BarChartByCategory";
 import FileResults from "./FileResults";
 import Header from "./Header";
 import CSVReader from 'react-csv-reader';
-import {CSVLink, CSVDownload} from "react-csv";
-import { VictoryBar } from 'victory';
+import { CSVLink } from "react-csv";
 
 const initial_state = {
   columns: [],
@@ -34,7 +33,7 @@ export default class App extends PureComponent {
       let col_index = 0;
       let row_json = {};
       for (col_index = 0; col_index < data_body[row_index].length; col_index++) {
-        if (header[col_index] == 'Amount') {
+        if (header[col_index] === 'Amount') {
           row_json[header[col_index]] = parseFloat(data_body[row_index][col_index]);
         }
         else {
@@ -96,7 +95,7 @@ export default class App extends PureComponent {
     let event_column_accessor = '';
     let col_index = 0;
     for (col_index = 0; col_index < this.state.columns.length; col_index++) {
-      if (this.state.columns[col_index]['Header']==event_column) {
+      if (this.state.columns[col_index]['Header'] === event_column) {
         event_column_accessor = this.state.columns[col_index]['accessor'];
       }
     }

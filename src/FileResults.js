@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import ReactTable from "react-table";
 import TableCell from "./TableCell";
 
 export default class FileResults extends PureComponent {
@@ -8,10 +7,6 @@ export default class FileResults extends PureComponent {
     columns: PropTypes.array,
     data: PropTypes.array
   };
-
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
   }

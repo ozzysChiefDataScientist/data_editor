@@ -9,10 +9,6 @@ export default class BarChartByCategory extends PureComponent {
     data: PropTypes.array
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
 
     const ans = _(this.props.data)

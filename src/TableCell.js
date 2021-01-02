@@ -24,7 +24,7 @@ export default class TableCell extends PureComponent {
 
   render() {
     let div_component;
-    if (this.props.colname == 'CATEGORY') {
+    if (this.props.colname === 'CATEGORY') {
       div_component = (
       <div>
       <select row_id={this.props.id} colname={this.props.colname}
