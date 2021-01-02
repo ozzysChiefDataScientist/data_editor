@@ -5,8 +5,7 @@
   "homepage": "http://ahfarmer.github.io/emoji-search",
   "devDependencies": {
     "gh-pages": "^2.0.1",
-    "prettier": "^1.17.1",
-    "react-scripts": "^3.0.1"
+    "prettier": "^1.17.1"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
@@ -19,6 +18,7 @@
     "react-data-grid-addons": "^7.0.0-alpha.24",
     "react-dom": "^16.8.6",
     "react-lodash": "^0.1.2",
+    "react-scripts": "^3.0.1",
     "react-table": "^6.8.6",
     "recharts": "^1.8.5",
     "victory-native": "^35.3.1"
