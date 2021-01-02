@@ -127,7 +127,7 @@ export default class App extends PureComponent {
         <FileResults data={this.state.data}
         columns={this.state.columns}
         updateData ={(event) => this.dataUpdater(event)}/>
-        <CSVLink data={this.state.data} headers={this.state.header}>Download me</CSVLink>
+        <button><CSVLink data={this.state.data} headers={this.state.header}>Download me</CSVLink></button>
         <BarChartByCategory data={this.state.data} />
       </div>
     );
