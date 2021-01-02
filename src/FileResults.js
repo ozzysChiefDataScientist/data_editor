@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import TableHeader from "./TableHeader";
 import ReactTable from "react-table";
 import TableCell from "./TableCell";
 
