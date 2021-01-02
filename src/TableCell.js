@@ -10,8 +10,9 @@ export default class TableCell extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {isLoggedIn: false,
+    this.state = {isFinalized: false,
                   categories: [
+                    '',
                     'Alonso',
                     'Books',
                   'Clothing',
@@ -20,6 +21,7 @@ export default class TableCell extends PureComponent {
                   'Financial Transfer',
                   'Gifts',
                   'Groceries/Essentials',
+                  'Health',
                   'Home',
                   'IRS',
                   'Moving',
@@ -40,12 +42,12 @@ export default class TableCell extends PureComponent {
 
 
   render() {
-    const isEmpty = (this.props.text == '') ? true : false;
     let div_component;
-    if (isEmpty) {
+    if (this.props.colname == 'CATEGORY') {
       div_component = (
       <div>
-      <select row_id={this.props.id} colname={this.props.colname} onChange={this.props.updateData} value={this.state.value}>
+      <select row_id={this.props.id} colname={this.props.colname}
+      onChange={this.props.updateData} value={this.state.value}>
       {
            this.state.categories.map(category =>(
               <option value={category}>{category}</option>
